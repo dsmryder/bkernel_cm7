@@ -186,7 +186,8 @@ int read_light_sensor(void)
 	int val;
 	val= i2c_smbus_read_byte_data(ltr502als->client, DATAREG);
 	DBG(KERN_INFO, "[LTR502ALS] READ_LS value=%d\n", (int)(val & DLS_DATA_MASK));
-	return val >= 0 ? (int)((val & DLS_DATA_MASK) * LS_MULT) : (-1);
+	val = val >= 0 ? (int)((val & DLS_DATA_MASK) * LS_MULT) : (-2);
+        return (val + 1);
 }
 EXPORT_SYMBOL(read_light_sensor);
 
@@ -632,7 +633,7 @@ static int ltr502als_ioctl(struct inode *inode, struct file *file, unsigned int 
 		case READ_LS:
 			val= i2c_smbus_read_byte_data(ltr502als->client, DATAREG);
 //			DBG(KERN_INFO, "[LTR502ALS] READ_LS value=%d\n", (int)(val & DLS_DATA_MASK));
-			return (int)((val & DLS_DATA_MASK) * LS_MULT);
+			return ((int)((val & DLS_DATA_MASK) * LS_MULT) + 1);
         case SET_PS_THRESHOLD:
         {                	
 			if(copy_from_user(&value, argp, sizeof(value)))	
@@ -1166,5 +1167,4 @@ MODULE_DESCRIPTION("ltr502als_i2c Sennsor driver");
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("NicoleWeng");
 /*} FIH, NicoleWeng, 2010/03/09  */
-
 
