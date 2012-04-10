@@ -11,7 +11,7 @@
 #This part exports the variables needed by the build script in order to build the kernel correctly
 export ARCH=arm
 #This is the kernel version that will be appended to the default kernel version
-export KBUILD_BUILD_VERSION="bKernel-CM7-0.6-DEV"
+export KBUILD_BUILD_VERSION="bKernel-CM7-0.5-DEV"
 #This is the name that the CWM flashable zip will be named as, MUST END WITH .zip!!
 KERNELZIP_VERSION=bKernel-CM7-0.5-DEV.zip
 
