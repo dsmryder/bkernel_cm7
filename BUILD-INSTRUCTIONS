@@ -1,0 +1,36 @@
+Welcome to bKernel!
+
+These instructions are writtem to help you go from a big pile of source code to a (hopefully) working
+kernel. HOWEVER, these instructions, and, in fact, the whole bKernel project are provided "AS-IS,"
+without any warranty of any kind, but in hopes that it will be useful. Also, this project is hosted
+under the terms of the GNU GPLv2. For further info, see gpl2.txt.
+
+Ok, now to the fun part!
+
+First of, you need to have a build enviorment setup. You can read many guides on how to setup a build
+enviroment for building android kernels. Also you need to have a fair knowledge of Linux, and Linux command
+line use. Google is your friend and many guides can be found to help out. From my experience, out of the 
+guides for building from AOSP sources, all you really need is java6(maybe not even this), ncurses, and the git
+software. Once these are set up, you will need to download a toolchain.
+
+Only one major piece of software still needs to be installed, if you have taken the advice above.
+And it is the most important, the Toolchain. I build with Linaro toolchain, available from
+www.linaro.org. I use the latest linaro android toolchain(android-toolchain 4.6).
+
+Now lets get started!
+
+1. Use git to setup an empty repo on your computer and download my sources into it. It is beyond
+   the scope of this guide to walk you through it step-by-step, but Github has some wonderful
+   beginner utorials on how to get started.
+
+2. Edit "build.sh" to point to your toolchain. If you use linaro 4.6 and have extracted it and it is
+   installed in your home directory(~/) then you should be fine because of the way I have it export using
+   `whoami` command will return the name of you username. Linaro should be at ~/ in a folder called android-toolchain-eabi
+
+   If you plan on using a different toolchain you will have to change the export CROSS_COMPILE line to reflect where your
+   toolchain is located.
+
+3. Run "./build.sh" from the command line.
+
+4. Thats it!! When it finishes, you will have built a (hopefully) working kernel, and you will
+   have a CWM flashable zip file in releasetools, named "bKernel-CM7-XX.XX-DEV.zip"

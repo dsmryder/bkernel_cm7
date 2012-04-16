@@ -1,0 +1,29 @@
+This is a file giving out thanks to all who has helped me with this build, as well as helped my brother out
+
+First I want to give a big thanks to my brother *shane87*, he is the one who got this build going for me, and allowed me to build from his sources
+as well as taught me everything I know about Linux, and has always been there for advice when it comes to computers
+
+*isaacj87(a.k.a ikarosdev)*- He helped my brother with initial issues reguarding the ramdisk offset when making the boot.img
+*tickerguy*- He has done so much for this phone and this kernel with all his work on the CM7 port, and he is a very intelligent dev
+and I'm glad we have had him on this phone
+*mantera*- he has helped the kernel and cm7/cm9 development of this phone tramendously
+*Whyzor*- he has taken where Tickerguy left off and ran with it
+*pwnyourace*- He was the first to venture into kernel land for the Triumph, and found that the oc tables from the ideosx6 kernel work
+on this phone, and I used his Umph Kernel for quite sometime and it's a very nice kernel
+*existz, and all the Talon DEV team*- They are the ones who got my brother into kernel making, and have helped him out grealty throughout
+his Android work
+*DooMLoRD*- He developed the oc tables for the ideosx6 that are still being used & implemented VDD voltage control, and helped with the 2GHz patch
+*Napstar*- He has taken over development of the ideosx6 kernel based on DooMLoRD's work, and added many features to the kernel
+*FXP*- He helped with the 2GHz patch on the ideosx6 kernel, which I use in mine
+*JoesephMother*- He is the Godfather of kernels on the Intercept, and has gave me great advice, and without him I probably wouldn't ever think about building kernels
+*Vampirefo*- He worked so hard on everything for the Intercept, and made a, awesome kernel and recovery, and was there to answer many of my questions
+*imoseyon*- He developed the interactiveX CPU governor, which I use in this kernel
+*Erasmux*- He developed the smartass governor along with Nadlabak and faux123 and he made the smoothass governor and smartass2
+*Joshua Seidel*- He developed the SavagedZen CPU governor
+*Aaron Carroll*- He is the author of the V(R) I/O scheduler
+*Miguel Boton*- He is the developer od the SIO(Simple I/O) I/O scheduler
+*spica234 for some optimizations I used in this kernel
+*Thanks goes to anyone who ever helped me along the way in any shape or form, I wouldn't not being doing this if people didn't like my work!*
+
+b_randon14
+<brandon14125@gmail.com>
