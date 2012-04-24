@@ -17,6 +17,10 @@ Only one major piece of software still needs to be installed, if you have taken 
 And it is the most important, the Toolchain. I build with Linaro toolchain, available from
 www.linaro.org. I use the latest linaro android toolchain(android-toolchain 4.6).
 
+I have included the latest linaro 4.6.3 toolchain in the repo, and the build.sh script points to that one. If you
+wish to use another toolchain(code sourcery, etc.) you must download it and change the CROSS_COMPILE line in the
+build.sh script.
+
 Now lets get started!
 
 1. Use git to setup an empty repo on your computer and download my sources into it. It is beyond
@@ -33,4 +37,4 @@ Now lets get started!
 3. Run "./build.sh" from the command line.
 
 4. Thats it!! When it finishes, you will have built a (hopefully) working kernel, and you will
-   have a CWM flashable zip file in releasetools, named "bKernel-CM7-XX.XX-DEV.zip"
+   have a CWM flashable zip file in releasetools, named "bKernel-CM7-XX.XX.zip"
