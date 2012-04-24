@@ -2463,12 +2463,7 @@ msmsdcc_runtime_resume(struct device *dev)
 		 */
 		if ((mmc->pm_flags & MMC_PM_WAKE_SDIO_IRQ) && release_lock)
 			wake_lock_timeout(&host->sdio_wlock, 1);
-<<<<<<< HEAD
-
-		 wake_unlock(&host->sdio_suspend_wlock);
-=======
 	        wake_unlock(&host->sdio_suspend_wlock);
->>>>>>> 343cd21... Proper fix for wifi & bt wakelocks and not leaving any around
 	}
 	return 0;
 }
