@@ -11,12 +11,11 @@
 #This part exports the variables needed by the build script in order to build the kernel correctly
 export ARCH=arm
 #This is the kernel version that will be appended to the default kernel version
-export KBUILD_BUILD_VERSION="bKernel-CM7-0.5-DEV"
+export KBUILD_BUILD_VERSION="bKernel-CM7-0.7-DEV"
 #This is the name that the CWM flashable zip will be named as, MUST END WITH .zip!!
-KERNELZIP_VERSION=bKernel-CM7-0.5-DEV.zip
+KERNELZIP_VERSION=bKernel-CM7-0.7-DEV.zip
 
-#This exports the path to you toolchain, it is set up to use the prebuilt CM7 toolchian, in a custom directory
-#If you intend to use another toolchain please update this variable to reflect where the new toolchain is located at
+#This exports the path to you toolchain, and it currently setup for the linaro 4.6 android toolchain found at www.linaro.org that I have included in the repo
 export CROSS_COMPILE=/home/`whoami`/android-toolchain-eabi/bin/arm-eabi-
 
 #This section cleans out the build directory to ensure a good build
