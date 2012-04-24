@@ -77,7 +77,7 @@ on boot
     chmod 0666 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0666 /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 4755 /system/bin/btwlancoex
+//    chmod 4755 /system/bin/btwlancoex
 
     chmod 0666 /sys/class/rfkill/rfkill1/state
     chmod 0666 /system/etc/hostapd/hostapd.conf
@@ -95,12 +95,13 @@ on boot
     chmod 0660 /data/hostapd/hostapd.conf
 
     #Power Management 
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760 
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1024000 
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand 
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000 
 
-    chown compass system /dev/yas529
+
+            chown compass system /dev/yas529
     chmod 0666 /dev/yas529
     chown compass system /dev/bma150
     chmod 0666 /dev/ltr502als_alsps
@@ -181,10 +182,10 @@ on property:init.svc.wpa_supplicant=stopped
 
 on property:init.svc.bluetoothd=running
     write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
-    start btwlancoex
+#    start btwlancoex
 
-on property:init.svc.bluetoothd=stopped
-    stop btwlancoex
+#on property:init.svc.bluetoothd=stopped
+#    stop btwlancoex
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     user bluetooth
@@ -192,23 +193,22 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     disabled
     oneshot
 
-# KD 9/25 - Remove unnecessary init
 # KD 9/12/2011  Add service at boot to populate the APN in the telephony area
-#service apn-populate /system/bin/sh /system/etc/init.apn.sh
-#    user root
-#    group radio
-#    oneshot
+service apn-populate /system/bin/sh /system/etc/init.apn.sh
+    user root
+    group radio
+    oneshot
 
 service gpsone_daemon /system/bin/gpsone_daemon
     user root
     group qcom_oncrpc
     disabled
 
-service btwlancoex /system/bin/sh /system/etc/init.qcom.coex.sh
-    user shell
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
+#service btwlancoex /system/bin/sh /system/etc/init.qcom.coex.sh
+#    user shell
+#    group bluetooth net_bt_admin
+#    disabled
+#    oneshot
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p14 /dev/block/mmcblk0p15
     user root
