@@ -1,7 +1,11 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.9
+<<<<<<< HEAD
  * Sat Dec 10 05:09:21 2011
+=======
+ * Sat Dec 31 01:16:12 2011
+>>>>>>> 7a4a6c1... Merge commit commit 7ab66f9c462f567d199e3a49e8094dbef0ae2781 from edowar: Update kgsl driver from Doomlord sources
  */
 /* ld script to make ARM Linux kernel
  * taken from the i386 version by Russell King
