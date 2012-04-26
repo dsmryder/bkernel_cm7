@@ -491,7 +491,7 @@ extern void savage_emit_clip_rect_s4(drm_savage_private_t * dev_priv,
 /*
  * access to the burst command interface (BCI)
  */
-#define SAVAGE_BCI_DEBUG 1
+#define SAVAGE_BCI_DEBUG 0
 
 #define BCI_LOCALS    volatile uint32_t *bci_ptr;
 
