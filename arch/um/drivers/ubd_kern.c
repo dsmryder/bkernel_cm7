@@ -1255,6 +1255,7 @@ static void do_ubd_request(struct request_queue *q)
 				return;
 
 			dev->request = req;
+			dev->rq_pos = blk_rq_pos(req);
 			blkdev_dequeue_request(req);
 			dev->start_sg = 0;
 			dev->end_sg = blk_rq_map_sg(q, req, dev->sg);
@@ -1274,7 +1275,7 @@ static void do_ubd_request(struct request_queue *q)
 				return;
 			}
 			prepare_request(req, io_req,
-					(unsigned long long) req->sector << 9,
+					(unsigned long long)dev->rq_pos << 9,
 					sg->offset, sg->length, sg_page(sg));
 
 			last_sectors = sg->length >> 9;
