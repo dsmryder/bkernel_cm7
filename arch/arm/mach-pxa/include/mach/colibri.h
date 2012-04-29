@@ -2,6 +2,7 @@
 #define _COLIBRI_H_
 
 #include <net/ax88796.h>
+#include <mach/mfp.h>
 
 /*
  * common settings for all modules
@@ -41,4 +42,3 @@ static inline void colibri_pxa3xx_init_nand(void) {}
 	gpio_to_irq(mfp_to_gpio(COLIBRI_PXA270_ETH_IRQ_GPIO))
 
 #endif /* _COLIBRI_H_ */
-
