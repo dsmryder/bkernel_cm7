@@ -553,4 +553,3 @@ void __init rx51_peripherals_init(void)
 	board_onenand_init();
 	board_smc91x_init();
 }
-
