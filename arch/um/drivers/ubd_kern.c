@@ -160,6 +160,7 @@ struct ubd {
 	struct scatterlist sg[MAX_SG];
 	struct request *request;
 	int start_sg, end_sg;
+	sector_t rq_pos;
 };
 
 #define DEFAULT_COW { \
@@ -184,6 +185,7 @@ struct ubd {
 	.request =		NULL, \
 	.start_sg =		0, \
 	.end_sg =		0, \
+	.rq_pos =		0, \
 }
 
 /* Protected by ubd_lock */
@@ -1288,6 +1290,7 @@ static void do_ubd_request(struct request_queue *q)
 				return;
 			}
 
+			dev->rq_pos += sg->length >> 9;
 			dev->start_sg++;
 		}
 		dev->end_sg = 0;
