@@ -179,15 +179,6 @@ __rcu_process_callbacks(&rcu_bh_ctrlblk);
 }
 
 /*
-* Null function to handle CPU being onlined. Longer term, we want to
-* make TINY_RCU avoid using rcupdate.c, but later...
-*/
-int rcu_cpu_notify(struct notifier_block *self, unsigned long action, void *hcpu)
-{
-return NOTIFY_OK;
-}
-
-/*
 * Wait for a grace period to elapse. But it is illegal to invoke
 * synchronize_sched() from within an RCU read-side critical section.
 * Therefore, any legal call to synchronize_sched() is a quiescent
@@ -198,6 +189,17 @@ return NOTIFY_OK;
 * Cool, huh? (Due to Josh Triplett.)
 *
 * But we want to make this a static inline later.
+*
+ * Wait for a grace period to elapse.  But it is illegal to invoke
+ * synchronize_sched() from within an RCU read-side critical section.
+ * Therefore, any legal call to synchronize_sched() is a quiescent
+ * state, and so on a UP system, synchronize_sched() need do nothing.
+ * Ditto for synchronize_rcu_bh().  (But Lai Jiangshan points out the
+ * benefits of doing might_sleep() to reduce latency.)
+ *
+ * Cool, huh?  (Due to Josh Triplett.)
+ *
+ * But we want to make this a static inline later.
 */
 void synchronize_sched(void)
 {
@@ -285,7 +287,7 @@ wait_for_completion(&rcu.completion);
 }
 EXPORT_SYMBOL_GPL(rcu_barrier_sched);
 
-void __rcu_init(void)
+void __init rcu_init(void)
 {
 open_softirq(RCU_SOFTIRQ, rcu_process_callbacks);
 }
