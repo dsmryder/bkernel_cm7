@@ -46,12 +46,11 @@ struct rcu_head **curtail; /* ->next pointer of last CB. */
 
 /* Definition for rcupdate control block. */
 static struct rcu_ctrlblk rcu_ctrlblk = {
-.rcucblist = NULL,
 .donetail = &rcu_ctrlblk.rcucblist,
 .curtail = &rcu_ctrlblk.rcucblist,
 };
+
 static struct rcu_ctrlblk rcu_bh_ctrlblk = {
-.rcucblist = NULL,
 .donetail = &rcu_bh_ctrlblk.rcucblist,
 .curtail = &rcu_bh_ctrlblk.rcucblist,
 };
@@ -99,6 +98,7 @@ local_irq_restore(flags);
 return 1;
 }
 local_irq_restore(flags);
+
 return 0;
 }
 
@@ -143,8 +143,8 @@ rcu_bh_qs(cpu);
 */
 static void __rcu_process_callbacks(struct rcu_ctrlblk *rcp)
 {
-unsigned long flags;
 struct rcu_head *next, *list;
+unsigned long flags;
 
 /* If no RCU callbacks ready to invoke, just return. */
 if (&rcp->rcucblist == rcp->donetail)
@@ -182,8 +182,7 @@ __rcu_process_callbacks(&rcu_bh_ctrlblk);
 * Null function to handle CPU being onlined. Longer term, we want to
 * make TINY_RCU avoid using rcupdate.c, but later...
 */
-int rcu_cpu_notify(struct notifier_block *self,
-unsigned long action, void *hcpu)
+int rcu_cpu_notify(struct notifier_block *self, unsigned long action, void *hcpu)
 {
 return NOTIFY_OK;
 }
@@ -234,8 +233,7 @@ local_irq_restore(flags);
 * period. But since we have but one CPU, that would be after any
 * quiescent state.
 */
-void call_rcu(struct rcu_head *head,
-void (*func)(struct rcu_head *rcu))
+void call_rcu(struct rcu_head *head, void (*func)(struct rcu_head *rcu))
 {
 __call_rcu(head, func, &rcu_ctrlblk);
 }
@@ -245,8 +243,7 @@ EXPORT_SYMBOL_GPL(call_rcu);
 * Post an RCU bottom-half callback to be invoked after any subsequent
 * quiescent state.
 */
-void call_rcu_bh(struct rcu_head *head,
-void (*func)(struct rcu_head *rcu))
+void call_rcu_bh(struct rcu_head *head, void (*func)(struct rcu_head *rcu))
 {
 __call_rcu(head, func, &rcu_bh_ctrlblk);
 }

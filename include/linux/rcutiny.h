@@ -70,8 +70,7 @@ synchronize_sched();
 }
 
 struct notifier_block;
-extern int rcu_cpu_notify(struct notifier_block *self,
-unsigned long action, void *hcpu);
+extern int rcu_cpu_notify(struct notifier_block *self, unsigned long action, void *hcpu);
 
 #ifdef CONFIG_NO_HZ
 
